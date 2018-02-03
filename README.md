@@ -102,4 +102,88 @@ class SingleActivity : BaseActivity(), GoogleAuthCallback.ResponseCallback {
 }
 ```
 
+#### Facebook Auth
+
+Open .gradle [Module] then add this line:
+```
+implementation 'com.facebook.android:facebook-android-sdk:4.7.0'
+```
+
+## How to use it?
+```
+class SingleActivity : BaseActivity(), FacebookAuthCallback.ResponseCallback {
+
+    private lateinit var facebookSignInHelper: FacebookAuth
+
+    //==============================================================================================
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.single_activity)
+
+        btn_single_googleSignIn.setOnClickListener { signInWithFacebook() }
+
+        btn_single_googleSignOut.setOnClickListener { signOutWithFacebook() }
+
+    }
+
+    override fun facebookProfileReceived(data: FacebookAuthUser) {
+
+        Toast.makeText(this@SingleActivity, data.email, Toast.LENGTH_SHORT).show()
+
+    }
+
+    override fun facebookLoginSuccess() {
+
+        Toast.makeText(this@SingleActivity, "Yeay login success", Toast.LENGTH_SHORT).show()
+
+    }
+
+    override fun facebookLoginFailed(errorMessage: String) {
+
+        Toast.makeText(this@SingleActivity, errorMessage, Toast.LENGTH_SHORT).show()
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        facebookSignInHelper.onActivityResult(requestCode, resultCode, data!!)
+
+    }
+
+    /**********************************
+     *  Initialize facebook sign-in   *
+     **********************************/
+    private fun initFacebookHelper() {
+
+        facebookSignInHelper = FacebookAuth(this@SingleActivity,
+                "id,name,email,gender,birthday,picture,cover", this@SingleActivity)
+
+    }
+
+    /***************************
+     *  Call facebook sign-in  *
+     ***************************/
+    private fun signInWithFacebook(){
+
+        showProgress()
+
+        facebookSignInHelper.facebookSignIn(this@SingleActivity)
+
+    }
+
+    /****************************
+     *  Call facebook sign-out  *
+     ****************************/
+    private fun signOutWithFacebook(){
+
+        showProgress()
+
+        facebookSignInHelper.facebookSignOut()
+
+    }
+}
+```
+
 [1]: https://github.com/irfanirawangits/gits-medsoc-helper/archive/master.zip
