@@ -1,10 +1,14 @@
-# gits-medsoc-helper
+# GITS Media Social Helper
 
 Class helper for auth and share content using google, facebook and twitter
 
-# Installing
+## Installing
 
-Download [the latest class][1], extract and than put them in util module. Open .gradle [Project] and add this line:
+Download [the latest class][1], extract and then put them in util module.
+
+### Google Auth
+
+Open .gradle [Project] and add this line:
 ```
 classpath 'com.google.gms:google-services:3.1.1'
 ```
