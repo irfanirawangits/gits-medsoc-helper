@@ -22,26 +22,28 @@ apply plugin: 'com.google.gms.google-services' => put this at the bottom in .gra
 
 ## How to use it?
 ```
-class SingleActivity : AppCompatActivity(), GoogleAuthCallback.ResponseCallback {
+class SingleActivity : BaseActivity(), GoogleAuthCallback.ResponseCallback {
 
     private lateinit var googleSignInHelper: GoogleAuth
-    
+
     //==============================================================================================
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.single_activity)
-        
+
         initGoogleHelper()
-        
+
         btn_single_googleAuth.setOnClickListener { signInWithGoogle() }
-        
+
     }
 
     override fun googleSignInSuccess(data: FirebaseUser) {
 
+        hideProgress()
+
         Toast.makeText(this@SingleActivity, data.email, Toast.LENGTH_SHORT).show()
-        
+
     }
 
     override fun googleSignInFailed(errorMessage: String) {
@@ -54,6 +56,13 @@ class SingleActivity : AppCompatActivity(), GoogleAuthCallback.ResponseCallback 
 
         Toast.makeText(this@SingleActivity, isSuccess.toString(), Toast.LENGTH_SHORT).show()
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        googleSignInHelper.onActivityResult(requestCode, resultCode, data!!)
+        
     }
 
     /********************************
@@ -69,9 +78,11 @@ class SingleActivity : AppCompatActivity(), GoogleAuthCallback.ResponseCallback 
      *  Call google auth function  *
      *******************************/
     private fun signInWithGoogle(){
-        
+
+        showProgress()
+
         googleSignInHelper.googleSignIn(this@SingleActivity)
-        
+
     }
 }
 ```
