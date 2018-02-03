@@ -20,5 +20,60 @@ implementation 'com.google.android.gms:play-services-auth:11.2.0'
 apply plugin: 'com.google.gms.google-services' => put this at the bottom in .gradle [Module]
 ```
 
+## How to use it?
+```
+class SingleActivity : AppCompatActivity(), GoogleAuthCallback.ResponseCallback {
+
+    private lateinit var googleSignInHelper: GoogleAuth
+    
+    //==============================================================================================
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.single_activity)
+        
+        initGoogleHelper()
+        
+        btn_single_googleAuth.setOnClickListener { signInWithGoogle() }
+        
+    }
+
+    override fun googleSignInSuccess(data: FirebaseUser) {
+
+        Toast.makeText(this@SingleActivity, data.email, Toast.LENGTH_SHORT).show()
+        
+    }
+
+    override fun googleSignInFailed(errorMessage: String) {
+
+        Toast.makeText(this@SingleActivity, errorMessage, Toast.LENGTH_SHORT).show()
+
+    }
+
+    override fun googleSignOut(isSuccess: Boolean) {
+
+        Toast.makeText(this@SingleActivity, isSuccess.toString(), Toast.LENGTH_SHORT).show()
+
+    }
+
+    /********************************
+     *  Initialize google sign-in   *
+     ********************************/
+    private fun initGoogleHelper() {
+
+        googleSignInHelper = GoogleAuth(this, this)
+
+    }
+
+    /*******************************
+     *  Call google auth function  *
+     *******************************/
+    private fun signInWithGoogle(){
+        
+        googleSignInHelper.googleSignIn(this@SingleActivity)
+        
+    }
+}
+```
 
 [1]: https://github.com/irfanirawangits/gits-medsoc-helper/archive/master.zip
