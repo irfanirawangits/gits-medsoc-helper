@@ -186,4 +186,13 @@ class SingleActivity : BaseActivity(), FacebookAuthCallback.ResponseCallback {
 }
 ```
 
+## Author?
+
+- Email : dadang.kotz@gmail.com
+- Call/WhatsApp : 089531183668
+- [LinkedIn][2]
+- [Instagram][3]
+
 [1]: https://github.com/irfanirawangits/gits-medsoc-helper/archive/master.zip
+[2]: https://www.linkedin.com/in/irfan-irawan-sukirman-9096bba7/
+[3]: https://www.instagram.com/ir.rawasukma/
