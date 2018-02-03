@@ -196,6 +196,7 @@ class SingleActivity : BaseActivity(), FacebookAuthCallback.ResponseCallback {
 ## Reference
 
 Thank you very much because it helps me as a reference to create the library :)
+
 -[https://github.com/multidots/android-social-signin-helper][4]
 
 [1]: https://github.com/irfanirawangits/gits-medsoc-helper/archive/master.zip
