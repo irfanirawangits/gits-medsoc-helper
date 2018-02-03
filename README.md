@@ -11,13 +11,13 @@ Download [the latest class][1], extract and then put them in util module.
 Open .gradle [Project] and add this line:
 ```
 classpath 'com.google.gms:google-services:3.1.1'
-
-apply plugin: 'com.google.gms.google-services' => put this at the bottom in .gradle [Module]
 ```
 Open .gradle [Module] then add this line:
 ```
 implementation 'com.google.firebase:firebase-auth:11.2.0'
 implementation 'com.google.android.gms:play-services-auth:11.2.0'
+
+apply plugin: 'com.google.gms.google-services' => put this at the bottom in .gradle [Module]
 ```
 
 
