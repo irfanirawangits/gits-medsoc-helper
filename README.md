@@ -186,7 +186,7 @@ class SingleActivity : BaseActivity(), FacebookAuthCallback.ResponseCallback {
 }
 ```
 
-## Author?
+## Author
 
 - Email : dadang.kotz@gmail.com
 - Call/WhatsApp : 089531183668
