@@ -34,8 +34,10 @@ class SingleActivity : BaseActivity(), GoogleAuthCallback.ResponseCallback {
 
         initGoogleHelper()
 
-        btn_single_googleAuth.setOnClickListener { signInWithGoogle() }
-
+        btn_single_googleSignIn.setOnClickListener { signInWithGoogle() }
+        
+        btn_single_googleSignOut.setOnClickListener { signOutWithGoogle() }
+        
     }
 
     override fun googleSignInSuccess(data: FirebaseUser) {
@@ -48,6 +50,8 @@ class SingleActivity : BaseActivity(), GoogleAuthCallback.ResponseCallback {
 
     override fun googleSignInFailed(errorMessage: String) {
 
+        hideProgress()
+        
         Toast.makeText(this@SingleActivity, errorMessage, Toast.LENGTH_SHORT).show()
 
     }
@@ -62,7 +66,7 @@ class SingleActivity : BaseActivity(), GoogleAuthCallback.ResponseCallback {
         super.onActivityResult(requestCode, resultCode, data)
 
         googleSignInHelper.onActivityResult(requestCode, resultCode, data!!)
-        
+
     }
 
     /********************************
@@ -74,14 +78,25 @@ class SingleActivity : BaseActivity(), GoogleAuthCallback.ResponseCallback {
 
     }
 
-    /*******************************
-     *  Call google auth function  *
-     *******************************/
+    /*************************
+     *  Call google sign-in  *
+     *************************/
     private fun signInWithGoogle(){
 
         showProgress()
 
         googleSignInHelper.googleSignIn(this@SingleActivity)
+
+    }
+
+    /**************************
+     *  Call google sign-out  *
+     **************************/
+    private fun signOutWithGoogle(){
+
+        showProgress()
+
+        googleSignInHelper.googleSignOut()
 
     }
 }
