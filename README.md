@@ -20,10 +20,11 @@ implementation 'com.google.android.gms:play-services-auth:11.2.0'
 apply plugin: 'com.google.gms.google-services' => put this at the bottom in .gradle [Module]
 ```
 
+Use SHA-1 release for fingerprint firebase console. How to get it can see here [link][5].
+
+
 ## How to use it?
 ```
-Use SHA-1 release for fingerprint firebase console. How to get it can see here
-
 class SingleActivity : BaseActivity(), GoogleAuthCallback.ResponseCallback {
 
     private lateinit var googleSignInHelper: GoogleAuth
@@ -110,8 +111,6 @@ Open .gradle [Module] then add this line:
 ```
 implementation 'com.facebook.android:facebook-android-sdk:4.7.0'
 ```
-
-Use SHA-1 release for fingerprint firebase console. How to get it can see here [link][5].
 
 ## How to use it?
 ```
@@ -206,3 +205,4 @@ Thank you very much because it helps me as a reference to create the library :)
 [2]: https://www.linkedin.com/in/irfan-irawan-sukirman-9096bba7/
 [3]: https://www.instagram.com/ir.rawasukma/
 [4]: https://github.com/multidots
+[5]: http://devdeeds.com/create-sha1-key-using-android-studio/
