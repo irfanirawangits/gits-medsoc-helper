@@ -113,7 +113,6 @@ implementation 'com.facebook.android:facebook-android-sdk:4.7.0'
 
 Use SHA-1 release for fingerprint firebase console. How to get it can see here [link][5].
 
-
 ## How to use it?
 ```
 class SingleActivity : BaseActivity(), FacebookAuthCallback.ResponseCallback {
